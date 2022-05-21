@@ -21,4 +21,6 @@ from main.views import hello
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', include('main.urls')),  # /hello
+    path('posts/', include('posts.urls')),
+    path('books/', include('books.urls')),
 ]

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ilqj1_8%8c7@tcp-al+eh7$)--2ttfls%8(e!f^_!n6hatk5v#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -38,9 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+
+    'main.apps.MainConfig',
     'posts.apps.PostsConfig',
     'books.apps.BooksConfig'
 ]
+
+DEVELOPMENT_APPS = [
+    'django_extensions',
+]
+
+if DEBUG:
+    INSTALLED_APPS += DEVELOPMENT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,3 +133,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+if DEBUG:
+    SHELL_PLUS_PRINT_SQL = True
+
